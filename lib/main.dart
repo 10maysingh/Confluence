@@ -5,6 +5,7 @@ import 'package:chat_app/shared/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,9 +55,13 @@ class _MyAppState extends State<MyApp> {
 }
   Widget build(BuildContext context) {
     return MaterialApp(
+
       theme: ThemeData(
         primaryColor: Constants().primaryColor,
         scaffoldBackgroundColor: Colors.white,
+        textTheme: GoogleFonts.openSansTextTheme(
+          Theme.of(context).textTheme,
+        ),
       ),
       debugShowCheckedModeBanner: false,
       home: _isSignedIn?const HomePage(): const LoginPage(),

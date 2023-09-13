@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         backgroundColor: Theme.of(context).primaryColor,
         title: const Text(
-          "Groups",
+          "Confluence",
           style: TextStyle(
             color: Colors.white,fontWeight: FontWeight.bold,fontSize: 27,
           ),
@@ -85,11 +85,11 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.symmetric(vertical: 50),
           children: <Widget>[
             Icon(
-              Icons.account_box_rounded,
+              Icons.account_circle_sharp,
               size: 150,
               color: Colors.grey,
             ),
-            const SizedBox(height:15),
+            const SizedBox(height:20),
             Text(userName,
             textAlign: TextAlign.center,
             style: const TextStyle(fontWeight: FontWeight.bold)),
@@ -229,7 +229,7 @@ class _HomePageState extends State<HomePage> {
           actions: [
             ElevatedButton(onPressed: () {
               Navigator.of(context).pop();
-            }, child: const Text("CANCEL"),
+            }, child: const Text("Cancel"),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Theme.of(context).primaryColor,
               ),
@@ -248,7 +248,7 @@ class _HomePageState extends State<HomePage> {
                 Navigator.of(context).pop();
                 showSnackBar(context, Colors.green, "Group created successfully.");
               }
-            }, child: const Text("CREATE"),
+            }, child: const Text("Create"),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Theme.of(context).primaryColor,
               ),

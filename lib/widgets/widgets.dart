@@ -4,17 +4,17 @@ const textInputDecoration = InputDecoration(
     labelStyle: TextStyle(color: Colors.black),
   focusedBorder: OutlineInputBorder(
     borderSide: BorderSide(
-      color: Color(0xFFee7b64),width:2
+      color: Color(0xffC147E9),width:2
     )
   ),
     enabledBorder: OutlineInputBorder(
 borderSide: BorderSide(
-color: Color(0xFFee7b64),width:2
+color: Color(0xFFE5B8F4),width:2
 )
 ),
     errorBorder: OutlineInputBorder(
         borderSide: BorderSide(
-            color: Color(0xFFee7b64),width:2
+            color: Color(0xff2D033B),width:2
         )
     )
 );

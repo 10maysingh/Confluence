@@ -5,6 +5,6 @@ class Constants {
   static String apiKey ="AIzaSyCKWDdPpJv4vVH5njZSmRPiulWdbEpTEjs";
   static String messagingSenderId ="283363838947";
   static String projectId ="chatappflutter-ca7bc";
-  final primaryColor = const Color(0xFFee7b64);
+  final primaryColor = const Color(0xffC147E9);
 
 }

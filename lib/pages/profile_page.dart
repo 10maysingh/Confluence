@@ -36,7 +36,7 @@ class _ProfilePageState extends State<ProfilePage> {
               padding: const EdgeInsets.symmetric(vertical: 50),
               children: <Widget>[
                 Icon(
-                  Icons.account_box_rounded,
+                  Icons.account_circle_sharp,
                   size: 150,
                   color: Colors.grey,
                 ),

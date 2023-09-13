@@ -1,6 +1,10 @@
 import 'package:chat_app/service/database_service.dart';
+import 'package:chat_app/widgets/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
+import 'home_page.dart';
 
 class GroupInfo extends StatefulWidget {
   final String groupId;
@@ -56,7 +60,29 @@ class _GroupInfoState extends State<GroupInfo> {
         backgroundColor: Theme.of(context).primaryColor,
         title: const Text("Group Info"),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.exit_to_app)),
+          IconButton(onPressed: () {
+            showDialog(context: context, builder: (context){
+              return AlertDialog(
+
+                title: const Text("Exit the group?"),
+                content: const Text("Are you sure you want to leave the group?"),
+                actions: [
+                  IconButton(onPressed: (){
+                    Navigator.pop(context);
+                  }, icon: const Icon(Icons.cancel, color: Colors.red ),
+                  ),
+                  IconButton(onPressed: () async{
+                    DatabaseService(uid: FirebaseAuth.instance.currentUser!.uid)
+                        .toggleGroupJoin(widget.groupId, getName(widget.adminName), widget.groupName)
+                    .whenComplete(() {
+                      nextScreenReplace(context, const HomePage());
+                    });
+                  }, icon: const Icon(Icons.done_sharp, color: Colors.greenAccent ),
+                  )
+                ],
+              );
+            });
+          }, icon: Icon(Icons.exit_to_app)),
         ]
       ),
       body: Container(
@@ -88,14 +114,14 @@ class _GroupInfoState extends State<GroupInfo> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Group: ${widget.groupName}",
+                        "Group Name: ${widget.groupName}",
                         style: const TextStyle(fontWeight: FontWeight.w500),
                       ),
                       const SizedBox(
                         height: 5,
                       ),
 
-                      Text("Group admin: ${getName(widget.adminName)}")
+                      Text("Admin: ${getName(widget.adminName)}")
                     ]
                   )
                 ],
@@ -138,7 +164,7 @@ class _GroupInfoState extends State<GroupInfo> {
                         ),
                       ),
                       title: Text(getName(snapshot.data['members'][index])),
-                      subtitle: Text(getId(snapshot.data['members'][index])),
+
                     ),
                   );
                 },
